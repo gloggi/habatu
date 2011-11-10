@@ -1,0 +1,81 @@
+{% extends "dialog.html" %}
+
+{% block content %}
+
+<div id="form-header">
+  <h1>
+    Spiel {% if object %}bearbeiten{% else %}erstellen {% endif %}
+  </h1>
+</div>
+<div id="form-content">
+  {% if form.errors %}
+    <div id="form-errors">
+      <p><strong>Bitte folgende Fehler korrigieren, messiii:</strong></p>
+        {{ form.non_field_errors }}
+        <ul>
+          {% for field in form %}
+            {% if field.errors %}
+              <li>{{ field.name }}: {{ field.errors|striptags }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+    </div>
+  {% endif %}
+  <form method="post" action="">
+    {% csrf_token %}
+  <table
+  <tr>
+    <td>
+      {{ form.teamA }}
+    </td>
+    <td class="middle">gegen</td>
+    <td>
+      {{ form.teamB }}
+    </td>
+  </tr>
+  
+  {% if object %}
+  <tr>
+    <th colspan="3">Ergebnis</th>
+  </tr>
+  <tr>
+    <td>
+      {{ form.score_teamA }}
+    </td>
+    <td class="middle">:</td>
+    <td>
+      {{ form.score_teamB }}
+    </td>
+  </tr>
+  {% endif %}
+  
+  <tr>
+    <td>
+      <strong>In:</strong><br/> 
+      {{ form.location }}
+    </td>
+    <td class="middle"></td>
+    <td>
+      <strong>Um:</strong><br/>
+      {{ form.time }}
+    </td>
+  </tr>
+  
+  <tr><td> </td></tr>
+  
+  <tr>
+    <td colspan="3">
+      <input type="submit" class="save button" value="Speicherä">
+      </form>
+      {% if object and SCHEDULE_MODE %}
+        {% url tournament_game_delete object.id as delete_url %}
+        <form method="post" action="{{ delete_url }}">
+          {% csrf_token %}
+          <input type="submit" class="delete button" value="Löschä" />
+        </form>
+      {% endif %}
+    </td>
+  </tr>
+  </table>
+</div>
+{% endblock %}

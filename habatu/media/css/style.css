@@ -80,7 +80,7 @@ a:hover {
 }
 
 #timetable th, #timetable td {
-  border: 1px solid grey;
+  border: 1px solid #ccc;
   height: 20px;
   padding: 2px;
   vertical-align:middle;
@@ -106,9 +106,43 @@ a:hover {
   text-align: left; 
 }
 
-a.add_game {
-  float:right;
-  color:black;
-  text-decoration:none;
-  margin-right:5px;
+td.drop { background: #C3D7FF; padding-bottom: 20px; }
+
+tr.conflicts th, tr.conflicts td {
+    background: #FF8080;
 }
+
+a.add_game {
+    display: block;
+    padding: 2px;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #00FF2A;
+}
+
+a.add_game:hover {
+    text-decoration: none;
+}
+
+.game_entry {
+    display: block;
+    padding: 2px;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+}
+
+.game_entry:hover {
+    text-decoration: none;
+}
+
+.t1 { background: #FFB2FF; }
+.t1:hover, .t1.mark { background: #FF4DFF; }
+.t2 { background: #B3E5FF; }
+.t2:hover, .t2.mark { background: #4DC2FF }
+.t3 { background: #FFD8B3; }
+.t3:hover, .t3.mark { background:#FFA54D; }

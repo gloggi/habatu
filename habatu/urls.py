@@ -9,7 +9,7 @@ urlpatterns = patterns('',
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
-    (r'^tour/', include('django_tournament.tournament.urls')),
+    (r'^', include('tournament.urls')),
 )
 
 urlpatterns +=  patterns('django.views.generic.simple',

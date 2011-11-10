@@ -1,0 +1,36 @@
+{% load tournament_tags %}
+
+<td id="{{ slot_id }}" data-timeframe="{{ timeframe.id }}" data-location="{{ location.id }}" class="timeslot">
+  {% for game in games %}
+    <a href="{% url tournament_game_update game.id %}" data-id="{{ game.id }}" class="game_entry t{{ game.tournament.id }} fancy"></p>
+    {% render_game game %}
+    </a>
+  {% endfor %}
+  {% url tournament_game_create_direct timeframe.id location.id as create_url %}
+  <a id="add_{{ slot_id }}" href="{{ create_url }}" class="fancy add_game">Spiel erstellen</a>
+</td>
+
+<script type="text/javascript">
+  $(function () {
+    $("#add_{{ slot_id }}").hide();
+  
+    $("#{{ slot_id }}").hover(function() {
+      //$(this).css({'background-color': 'green'});
+      if ($(this).find('.game_entry').size() == 0) {
+        $("#add_{{ slot_id }}").show();
+      }
+    }, function () {
+      //$(this).css({'background-color': '#fff'});
+      $("#add_{{ slot_id }}").hide();
+    });
+    
+    /*
+    $("#{{ slot_id }}").click(function () {
+        $("#add_{{ slot_id }}").click();
+    });
+    */
+    $("#add_{{ slot_id }}").click(function (e) {
+        e.stopPropagation();
+    });
+  });
+</script>

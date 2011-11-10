@@ -22,7 +22,7 @@ Now, let's attach it to your select boxes on DOM ready:
 
     <pre>
       jQuery(document).ready(function() {
-        jQuery("select[class*=flexselect]).flexselect();
+        jQuery("select.flexselect).flexselect();
       });
     </pre>
 
@@ -53,6 +53,7 @@ into a bad-ass autocompleting text box with flex matching support.
   find (perhaps unbind mouseover during filtering until a mousemove).
 * Add templating support for matched list output.
 * Add highlighting of matched characters in the results.
+* Consider support for optgroup tags
 
 ## Author
 

@@ -1,9 +1,0 @@
-{% if game.is_finished %}
-  <span class="team {{ game.teamA.id }}">{{ game.teamA }}</span>
-  {{ game.score_teamA }} : {{ game.score_teamB }}
-  <span class="team {{ game.teamB.id }}">{{ game.teamB }}</span>
-{% else %}
-  <span class="team {{ game.teamA.id }}">{{ game.teamA }}</span>
-  -
-  <span class="team {{ game.teamB.id }}">{{ game.teamB }}</span>
-{% endif %}

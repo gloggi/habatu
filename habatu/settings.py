@@ -88,7 +88,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'django_tournament.urls'
+ROOT_URLCONF = 'habatu.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_PATH, 'templates')
@@ -115,4 +115,4 @@ TOURNAMENT_TITLE = "GLOGGI HABATU 2010: SPIELPLAN"
 
 TOURNAMENT_LOGO = "/media/img/gp_logo.png"
 
-SCHEDULE_MODE = False
+SCHEDULE_MODE = True

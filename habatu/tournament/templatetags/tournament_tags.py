@@ -16,7 +16,6 @@ def render_slot(timeframe, location):
         'location': location,
         'slot_id': slot_id,
         'games': games,
-        'SCHEDULE_MODE': settings.SCHEDULE_MODE,
     }
     
     

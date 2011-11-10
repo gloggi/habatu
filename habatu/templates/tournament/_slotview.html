@@ -1,0 +1,7 @@
+{% load tournament_tags %}
+
+<td id="{{ slot_id }}" class="timeslot">
+  {% for game in games %}
+    <div class="game_entry t{{ game.tournament.id }}">{% render_game game %}</div>
+  {% endfor %}
+</td>

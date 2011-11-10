@@ -10,9 +10,8 @@
   <link rel="stylesheet" type="text/css" href="/media/css/dialog.css">
   <link rel="stylesheet" type="text/css" href="/media/lib/flexselect/flexselect.css">
   <script type="text/javascript" src="/media/lib/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/media/lib/flexselect/jquery.flexselect.js"></script>
   <script type="text/javascript" src="/media/lib/flexselect/liquidmetal.js"></script>
-  <script type="text/javascript" src="/media/js/dialog.js"></script>
+  <script type="text/javascript" src="/media/lib/flexselect/jquery.flexselect.js"></script>
 </head>
 
 <body>
@@ -20,5 +19,11 @@
   <div id="container">
       {% block content %}{% endblock %}
   </div>
+  
+  <script type="text/javascript">
+    $(function () {
+         $("select").flexselect();
+    });
+  </script>
 </body>
 </html>

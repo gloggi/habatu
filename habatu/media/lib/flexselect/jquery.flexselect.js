@@ -1,5 +1,5 @@
 /*
- * flexselect: a jQuery plugin, version: 0.2 (2009-03-16)
+ * flexselect: a jQuery plugin, version: 0.2.2 (2011-07-20)
  * @requires jQuery v1.3 or later
  *
  * FlexSelect is a jQuery plugin that makes it easy to convert a select box into
@@ -39,7 +39,7 @@
     dropdownMouseover: false, // Workaround for poor IE behaviors
 
     init: function(select, options) {
-      $.extend(this.settings, options);
+      this.settings = $.extend({}, this.settings, options);
       this.select = $(select);
       this.preloadCache();
       this.renderControls();
@@ -53,7 +53,8 @@
     },
 
     renderControls: function() {
-      var selected = this.select.children("option:selected");
+      var selected = this.select.find('option[selected=selected]');
+      //console.log(selected.val());
 
       this.hidden = $("<input type='hidden'/>").attr({
         id: this.select.attr("id"),
@@ -66,7 +67,7 @@
         accesskey: this.select.attr("accesskey"),
         tabindex: this.select.attr("tabindex"),
         style: this.select.attr("style")
-      }).addClass(this.select.attr("class")).val($.trim(selected.text()));
+      }).addClass(this.select.attr("class")).val($.trim(selected.text()));;
 
       this.dropdown = $("<div></div>").attr({
         id: this.settings.dropdownIdTransform(this.select.attr("id"))
@@ -100,7 +101,7 @@
       this.input.blur(function() {
         if (!self.dropdownMouseover) {
           self.hide();
-          if (!self.picked) self.reset();
+          if (!self.settings.allowMismatch && !self.picked) self.reset();
         }
       });
 

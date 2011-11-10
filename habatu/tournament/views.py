@@ -1,5 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic.simple import direct_to_template as render
+from django.shortcuts import render
 from django.views.generic.create_update import create_object, update_object, delete_object
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
@@ -32,7 +32,6 @@ def table_view(request):
     
     
 def stats(request):
-    
     tournaments = Tournament.objects.exclude(pk=4).select_related()
     
     return render(request, 'tournament/stats.html', {
@@ -54,7 +53,7 @@ def game_create_direct(request, timeframe_id, location_id):
         form = GameForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('tournament_game_saved')
+            return redirect('tournament_saved')
     else:
         form = GameForm(initial= {
             'time': timeframe,
@@ -65,20 +64,6 @@ def game_create_direct(request, timeframe_id, location_id):
     return render(request, 'tournament/game_form.html', {
         'form': form,
     })
-    
-def game_update(request, id):
-    return update_object(request,
-        form_class=GameForm,
-        object_id=id,
-        post_save_redirect=reverse('tournament_game_saved')
-    )
-    
-def game_delete(request, id):
-    return delete_object(request,
-        model=Game,
-        object_id=id,
-        post_delete_redirect=reverse('tournament_game_saved')
-    )
     
 def game_count(request):
     

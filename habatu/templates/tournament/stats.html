@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<meta http-equiv="refresh" content="20; URL={% url tournament_table %}">
+{% endblock %}
+
+{% block content %}
+
+{% for tournament in tournaments %}
+<div class="stats">
+  <h1>{{ tournament }}</h1>
+  
+  <table class="stats_table">
+    <tr>
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>Torverhältnis</th>
+      <th>Punkte</th>
+    </tr>
+    {% for team in tournament.teams_by_rank %}
+      <tr>
+        <td><strong>{{ forloop.counter }}</strong></td>
+        <td>{{ team }}</td>
+        <td>{{ team.games_played }}/{{ team.total_games }}</td>
+        <td>{{ team.score_ratio_display }}</td>
+        <td><strong>{{ team.points }}</strong></td>
+      </tr>
+    {% endfor %}
+  </table>
+  <br/><br/>
+</div>
+
+{% endfor %}
+
+{% endblock %}

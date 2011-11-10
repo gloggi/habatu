@@ -11,6 +11,7 @@ def compare_teams(teamA, teamB):
     else:
         return teamB.points - teamA.points
 
+
 class Tournament(models.Model):
     title = models.CharField(_('title'), max_length=100)
     
@@ -20,15 +21,11 @@ class Tournament(models.Model):
     def teams_by_rank(self):
         return sorted(self.team_set.all(), cmp=compare_teams)
 
-class Team(models.Model):
-    
-    name = models.CharField(_('name'), max_length=100)
 
+class Team(models.Model):  
+    name = models.CharField(_('name'), max_length=100)
     manager = models.CharField(_('manager'), max_length=100, blank=True, null=True)
-    
     club = models.CharField(_('club'), max_length=100, blank=True, null=True)
-    
-    #participations = models.ManyToManyField(Tournament)
     tournament = models.ForeignKey(Tournament)
 
     def __unicode__(self):
@@ -66,6 +63,7 @@ class Team(models.Model):
                     points += 3
         return points
 
+
 class Timeframe(models.Model):
     start = models.DateTimeField(_('from'))
     end = models.DateTimeField(_('to'))
@@ -76,6 +74,7 @@ class Timeframe(models.Model):
     def __unicode__(self):
         return "%s" % self.start.strftime('%H:%M')
 
+
 class Location(models.Model):
     name = models.CharField(_('name'), max_length=20)
     
@@ -85,10 +84,10 @@ class Location(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Game(models.Model):
     time = models.ForeignKey(Timeframe)
     location = models.ForeignKey(Location)
-    #tournament = models.ForeignKey(Tournament)
     
     teamA = models.ForeignKey(Team, related_name='games_a')
     teamB = models.ForeignKey(Team, related_name='games_b')
@@ -98,18 +97,6 @@ class Game(models.Model):
     
     def clean(self):
         from django.core.exceptions import ValidationError
-        
-        # Both teams must participate in the game tournament
-        
-        """ Version for multiple tournaments
-        msg = _(u'%(team)s is not participating in tournament %(tournament)s')
-        if not self.teamA in Team.objects.filter(participations=self.tournament):
-            raise ValidationError(msg % {'team':self.teamA, 
-                                         'tournament':self.tournament})
-        if not self.teamB in Team.objects.filter(participations=self.tournament):
-            raise ValidationError(msg % {'team':self.teamB, 
-                                         'tournament':self.tournament})
-        """
         
         msg = _(u'%(teamA)s and %(teamB)s dont play in the same tournamentS')
         if self.teamA.tournament != self.teamB.tournament:
@@ -141,6 +128,10 @@ class Game(models.Model):
             return self.score_teamA
         else:
             return 0
+    
+    @property
+    def tournament(self):
+        return self.teamA.tournament
     
     @property
     def winner(self):
