@@ -1,0 +1,33 @@
+{% load tournament_tags %}
+
+<td id="{{ slot_id }}" class="timeslot">
+  {% if SCHEDULE_MODE %}
+    {% url tournament_game_create_direct timeframe.id location.id as create_url %}
+    <a id="add_{{ slot_id }}" href="{{ create_url}}" class="fancy add_game">+</a>
+  {% endif %}
+  {% for game in games %}
+    <p><a href="{% url tournament_game_update game.id %}" class="fancy"></p>
+    {% render_game game %}
+    </a>
+  {% endfor %}
+</td>
+
+<script type="text/javascript">
+  $(function () {
+    $("#add_{{ slot_id }}").hide();
+  
+    $("#{{ slot_id }}").hover(function() {
+      $(this).css({'background-color': '#eee'});
+      $("#add_{{ slot_id }}").show();
+    }, function () {
+      $(this).css({'background-color': '#fff'});
+      $("#add_{{ slot_id }}").hide();
+    });
+    
+    $("#{{ slot_id }}").click(function () {
+      {% if SCHEDULE_MODE %}
+        $("#add_{{ slot_id }}").click();
+      {% endif %}
+    });
+  });
+</script>

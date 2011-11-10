@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load tournament_tags %}
+
+{% block content %}
+<table id="timetable" cellpadding="0" cellspacing="0">
+  <tr>
+    <th class="time"><!-- empty --></th>
+    {% for location in locations %}
+      <th class="location">{{ location}}</th>
+    {% endfor %}
+    
+    {% for timeframe in timeframes %}
+      <tr>
+         <th>{{ timeframe.start|date:'H:i'}}</th>
+         {% for location in locations %}
+            {% render_slot timeframe location %}
+         {% endfor %}
+      </tr>
+      
+      {% render_lunch_time timeframe %}
+    {% endfor %}
+  </tr>
+</table>
+<br/>
+<p>
+  Team markieren: 
+  <select id="teammarker">
+    <option value="0">Keines</option>
+    {% for team in teams %}
+      <option value="{{ team.id }}">{{ team.name }}</option>
+    {% endfor %}
+  </select>
+</p>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+/* 
+ * Tournamet style!
+ * Author: Stefan Reinhard
+ */
+ 
+@font-face { font-family: 'Alpha'; src: url('../ttf/Alpha.ttf'); }
+
+html, body {
+   margin:10px;
+   color:black;
+} 
+
+header {
+   background:red;
+   padding:10px 15px;
+   margin:10px 0px;
+   font-family: Alpha, Arial;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#900));
+   background: -moz-linear-gradient(#C00, #900);
+   text-shadow: 2px 2px 2px #000;
+   color:white;
+}
+
+
+header h1 {
+  font-size: 2.2em;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+div.stats {
+  float:left;
+  padding-right:100px;
+}
+
+table.stats_table {
+  margin-top:20px
+}
+
+table.stats_table td, table.stats_table th {
+  border: 1px solid grey;
+  padding:3px;
+}
+
+table.stats_table th {
+  padding-right: 20px;
+}
+
+#gp_logo {
+  float:right;
+  width:90px;
+  height:33px;
+}
+
+
+.hidden {
+  display:none;
+}
+
+a {
+  color:black;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+/*
+ * Timetable Main Stuff
+ */
+ 
+#timetable {
+  width: 100%;
+  border-radius: 10px;
+}
+
+#timetable th, #timetable td {
+  border: 1px solid grey;
+  height: 20px;
+  padding: 2px;
+  vertical-align:middle;
+}
+
+#timetable th.time {
+  width: 4%;
+}
+
+#timetable th.location {
+  width: 32%;
+  background:red;
+  background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+  background: -moz-linear-gradient(#eee, #ccc);
+}
+
+#timetable td.lunchtime {
+  text-align:center;
+  font-weight:bold;
+}
+
+#timetable td.timeslot {
+  text-align: left; 
+}
+
+a.add_game {
+  float:right;
+  color:black;
+  text-decoration:none;
+  margin-right:5px;
+}

@@ -1,0 +1,40 @@
+<!doctype html>  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block title %}Tournament{% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/media/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="/media/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/media/lib/fancybox/jquery.fancybox-1.3.2.css">
+  
+  <script type="text/javascript" src="/media/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/media/lib/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
+  <script type="text/javascript" src="/media/js/script.js"></script>
+  {% block extra_head %}
+  {% endblock %}
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+      <img id="gp_logo" src="{{ TOURNAMENT_LOGO }}">
+      <h1>{{ TOURNAMENT_TITLE }}</h1>
+
+    </header>
+    
+    <div id="main">
+      {% block content %}{% endblock %}
+    </div>
+    
+    <footer>
+
+    </footer>
+  </div>
+</body>
+</html>

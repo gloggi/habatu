@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for tournament in tournaments %}
+  <h1>{{ tournament }}</h1>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Anzahl Spiele</th>
+    </tr>
+    {% for team in tournament.team_set.all %}
+      <tr>
+        <td>{{ team }}</td>
+        <td>{{ team.all_games.count }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <br/><br/>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!doctype html>  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block title %}Tournament{% endblock %}</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/media/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="/media/css/dialog.css">
+  <link rel="stylesheet" type="text/css" href="/media/lib/flexselect/flexselect.css">
+  <script type="text/javascript" src="/media/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/media/lib/flexselect/jquery.flexselect.js"></script>
+  <script type="text/javascript" src="/media/lib/flexselect/liquidmetal.js"></script>
+  <script type="text/javascript" src="/media/js/dialog.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+      {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
