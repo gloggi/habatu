@@ -20,9 +20,9 @@
     </tr>
     {% for team in tournament.teams_by_rank %}
       <tr>
-        <td><strong>{{ forloop.counter }}</strong></td>
+        <td><strong>{{ forloop.counter }}.</strong></td>
         <td>{{ team }}</td>
-        <td>{{ team.games_played }}/{{ team.total_games }}</td>
+        <td>{{ team.games_played }} / {{ team.total_games }}</td>
         <td>{{ team.score_ratio_display }}</td>
         <td><strong>{{ team.points }}</strong></td>
       </tr>

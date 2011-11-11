@@ -10,7 +10,7 @@
     {% endfor %}
     
     {% for timeframe in timeframes %}
-      <tr>
+      <tr data-hour="{{ timeframe.hour }}" data-minute="{{ timeframe.minute }}">
          <th>{{ timeframe.start|date:'H:i'}}</th>
          {% for location in locations %}
             {% render_slot timeframe location %}

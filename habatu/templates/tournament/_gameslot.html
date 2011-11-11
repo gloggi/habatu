@@ -2,7 +2,8 @@
 
 <td id="{{ slot_id }}" data-timeframe="{{ timeframe.id }}" data-location="{{ location.id }}" class="timeslot">
   {% for game in games %}
-    <a href="{% url tournament_game_update game.id %}" data-id="{{ game.id }}" class="game_entry t{{ game.tournament.id }} fancy"></p>
+    <a href="{% url tournament_game_update game.id %}" data-id="{{ game.id }}"
+         class="game_entry t{{ game.tournament.id }} fancy">
     {% render_game game %}
     </a>
   {% endfor %}

@@ -11,7 +11,7 @@ from forms import GameForm
 def table_edit(request):
     locations = Location.objects.all()
     timeframes = Timeframe.objects.all()
-    teams = Team.objects.exclude(tournament=4)
+    teams = Team.objects.filter(tournament__hidden=False)
     
     return render(request, 'tournament/table_edit.html', {
         'locations': locations,
@@ -22,7 +22,7 @@ def table_edit(request):
 def table_view(request):
     locations = Location.objects.all()
     timeframes = Timeframe.objects.all()
-    teams = Team.objects.exclude(tournament=4)
+    teams = Team.objects.filter(tournament__hidden=False)
     
     return render(request, 'tournament/table_view.html', {
         'locations': locations,
@@ -32,7 +32,7 @@ def table_view(request):
     
     
 def stats(request):
-    tournaments = Tournament.objects.exclude(pk=4).select_related()
+    tournaments = Tournament.objects.filter(hidden=False).select_related()
     
     return render(request, 'tournament/stats.html', {
         'tournaments': tournaments

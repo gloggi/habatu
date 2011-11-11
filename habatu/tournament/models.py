@@ -14,6 +14,7 @@ def compare_teams(teamA, teamB):
 
 class Tournament(models.Model):
     title = models.CharField(_('title'), max_length=100)
+    hidden = models.BooleanField(_('hidden'), help_text=_('dont show in result table'))
     
     def __unicode__(self):
         return self.title
@@ -72,7 +73,15 @@ class Timeframe(models.Model):
         ordering = ('start',)
     
     def __unicode__(self):
-        return "%s" % self.start.strftime('%H:%M')
+        return self.start.strftime('%H:%M')
+        
+    @property
+    def hour(self):
+        return self.start.strftime('%H')
+    
+    @property
+    def minute(self):
+        return self.start.strftime('%M')
 
 
 class Location(models.Model):

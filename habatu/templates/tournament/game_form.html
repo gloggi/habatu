@@ -67,7 +67,7 @@
     <td colspan="3">
       <input type="submit" class="save button" value="Speicherä">
       </form>
-      {% if object and SCHEDULE_MODE %}
+      {% if object %}
         {% url tournament_game_delete object.id as delete_url %}
         <form method="post" action="{{ delete_url }}">
           {% csrf_token %}

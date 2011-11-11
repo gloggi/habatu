@@ -77,7 +77,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages",
-    "context_processors.tournament_settings",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,9 +109,3 @@ LANGUAGES = (
     ('en', 'English'),
     ('de', 'Deutsch'),
 )
-
-TOURNAMENT_TITLE = "GLOGGI HABATU 2010: SPIELPLAN"
-
-TOURNAMENT_LOGO = "/media/img/gp_logo.png"
-
-SCHEDULE_MODE = True

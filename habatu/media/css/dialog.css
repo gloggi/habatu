@@ -50,21 +50,22 @@ div.flexselect_dropdown {
   padding: 5px;
   border-radius: 3px;
   color:white;
+  text-shadow: 1px 1px 1px #222;
 }
 
 input.save {
-  background-color: #c7e76c;
+  background-color: #BDFF00;
   float:left;
 }
 
-input.save:hover { background-color: #BDFF00 }
+input.save:hover { background-color: #6DFF00 }
 
 input.delete {
-  background-color: #e86dc7;
+  background-color:  #E81AB1;
   float:right;
 }
 
-input.delete:hover {  background-color: #E81AB1 }
+input.delete:hover {  background-color: #AF1AE8 }
 
 .saved {
     font-size: 40px;

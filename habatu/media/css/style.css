@@ -19,7 +19,7 @@ header {
    -moz-border-radius: 10px;
    background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#900));
    background: -moz-linear-gradient(#C00, #900);
-   text-shadow: 2px 2px 2px #000;
+   text-shadow: 2px 2px 2px #222;
    color:white;
 }
 
@@ -32,23 +32,14 @@ h1 {
   font-size: 1.5em;
 }
 
-div.stats {
-  float:left;
-  padding-right:100px;
+#clock {
+  float: right;
+  width: 160px;
+  font-size: 28px;
+  text-shadow: none;
+
 }
 
-table.stats_table {
-  margin-top:20px
-}
-
-table.stats_table td, table.stats_table th {
-  border: 1px solid grey;
-  padding:3px;
-}
-
-table.stats_table th {
-  padding-right: 20px;
-}
 
 #gp_logo {
   float:right;
@@ -69,6 +60,31 @@ a {
 a:hover {
   text-decoration:underline;
 }
+
+
+.stats {
+  float:left;
+  padding-right:100px;
+}
+
+.stats h1 { font-size: 30px; }
+
+table.stats_table {
+  margin-top:20px;
+  width: 100%;
+}
+
+table.stats_table td, table.stats_table th {
+  border: 1px solid grey;
+  padding:3px;
+  font-size: 25px;
+  text-align: center;
+}
+
+table.stats_table th {
+  padding: 0 20px;
+}
+
 
 /*
  * Timetable Main Stuff
@@ -112,6 +128,11 @@ tr.conflicts th, tr.conflicts td {
     background: #FF8080;
 }
 
+tr.current th, tr.current td {
+    background: #FFFFD9;
+}
+
+
 a.add_game {
     display: block;
     padding: 2px;
@@ -146,3 +167,7 @@ a.add_game:hover {
 .t2:hover, .t2.mark { background: #4DC2FF }
 .t3 { background: #FFD8B3; }
 .t3:hover, .t3.mark { background:#FFA54D; }
+.t4 { background: #FFB3B3; }
+.t4:hover, .t3.mark { background:#FF4D4D; }
+
+

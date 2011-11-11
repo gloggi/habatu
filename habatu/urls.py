@@ -24,6 +24,5 @@ if 'runserver' in sys.argv:
                 'document_root': settings.MEDIA_ROOT, 
                 'show_indexes':True
             }
-        ),
-      
+        ), 
     )
