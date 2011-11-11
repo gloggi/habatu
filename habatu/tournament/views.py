@@ -12,22 +12,26 @@ def table_edit(request):
     locations = Location.objects.all()
     timeframes = Timeframe.objects.all()
     teams = Team.objects.filter(tournament__hidden=False)
+    tournaments = Tournament.objects.filter(hidden=False)
     
     return render(request, 'tournament/table_edit.html', {
         'locations': locations,
         'timeframes': timeframes,
         'teams': teams,
+        'tournaments': tournaments,
     })
     
 def table_view(request):
     locations = Location.objects.all()
     timeframes = Timeframe.objects.all()
     teams = Team.objects.filter(tournament__hidden=False)
+    tournaments = Tournament.objects.filter(hidden=False)
     
     return render(request, 'tournament/table_view.html', {
         'locations': locations,
         'timeframes': timeframes,
         'teams': teams,
+        'tournaments': tournaments,
     })
     
     

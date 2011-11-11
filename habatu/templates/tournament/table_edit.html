@@ -21,15 +21,23 @@
     {% endfor %}
   </tr>
 </table>
-<br/>
-<p>
-  Team markieren: 
-  <select id="teammarker">
-    <option value="0">Keines</option>
-    {% for team in teams %}
-      <option value="{{ team.id }}">{{ team.name }}</option>
-    {% endfor %}
-  </select>
-</p>
 
+<div class="tools">
+    <span class="marker">
+      Team markieren: 
+      <select id="teammarker">
+        <option value="0">Keines</option>
+        {% for team in teams %}
+          <option value="{{ team.id }}">{{ team.name }}</option>
+        {% endfor %}
+      </select>
+    </span>
+
+    <span class="legend">
+    {% for tournament in tournaments %}
+        <div class="square t{{ tournament.id }}"></div>
+        <div class="tournament_label">{{ tournament }}</div>
+    {% endfor %}
+    </span>
+</div>
 {% endblock %}

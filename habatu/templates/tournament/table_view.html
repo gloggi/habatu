@@ -26,4 +26,12 @@
   </tr>
 </table>
 
+<div class="tools">
+    <span class="legend">
+    {% for tournament in tournaments %}
+        <div class="square t{{ tournament.id }}"></div>
+        <div class="tournament_label">{{ tournament }}</div>
+    {% endfor %}
+    </span>
+</div>
 {% endblock %}

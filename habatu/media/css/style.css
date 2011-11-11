@@ -100,6 +100,11 @@ table.stats_table th {
   height: 20px;
   padding: 2px;
   vertical-align:middle;
+  font-size: 18px;
+}
+
+#timetable th {
+  padding: 6px 0;
 }
 
 #timetable th.time {
@@ -132,6 +137,28 @@ tr.current th, tr.current td {
     background: #FFFFD9;
 }
 
+.tools {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.marker {
+    float: right;
+}
+
+.tournament_label {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.legend .square {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    margin-top: -10px;
+    width: 30px;
+    height: 30px;
+}
 
 a.add_game {
     display: block;
