@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-31 01:14+0200\n"
+"POT-Creation-Date: 2011-11-11 14:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: tournament/models.py:5
+#: tournament/models.py:16
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
-#: tournament/models.py:12 tournament/models.py:43
+#: tournament/models.py:17
+msgid "hidden"
+msgstr "Versteckt"
+
+#: tournament/models.py:17
+msgid "dont show in result table"
+msgstr "Nicht anzeigen in den Resultaten"
+
+#: tournament/models.py:20
+msgid "Tournament"
+msgstr "Turnier"
+
+#: tournament/models.py:21
+msgid "Tournaments"
+msgstr "Turniere"
+
+#: tournament/models.py:31 tournament/models.py:100
 msgid "name"
-msgstr ""
+msgstr "Name"
 
-#: tournament/models.py:13
-msgid "club"
-msgstr ""
-
-#: tournament/models.py:14
+#: tournament/models.py:32
 msgid "manager"
-msgstr ""
+msgstr "Verantwortlich"
 
-#: tournament/models.py:36
-msgid "from"
-msgstr ""
+#: tournament/models.py:33
+msgid "club"
+msgstr "Abteilung"
 
 #: tournament/models.py:37
+msgid "Team"
+msgstr "Mannschaft"
+
+#: tournament/models.py:38
+msgid "Teams"
+msgstr "Mannschaften"
+
+#: tournament/models.py:77
+msgid "from"
+msgstr "Von"
+
+#: tournament/models.py:78
 msgid "to"
-msgstr ""
+msgstr "Bis"
 
-#: tournament/models.py:57
+#: tournament/models.py:81
+msgid "Timeframe"
+msgstr "Zeit"
+
+#: tournament/models.py:82
+msgid "Timeframes"
+msgstr "Zeiten"
+
+#: tournament/models.py:104
+msgid "Location"
+msgstr "Ort"
+
+#: tournament/models.py:105
+msgid "Locations"
+msgstr "Orte"
+
+#: tournament/models.py:118
 msgid "Score Team A"
-msgstr ""
+msgstr "Resultat Team A"
 
-#: tournament/models.py:58
+#: tournament/models.py:119
 msgid "Score Team B"
-msgstr ""
+msgstr "Resultat Team B"
 
-#: tournament/models.py:64
-#, python-format
-msgid "%(team)s is not participating in tournament %(tournament)s"
+#: tournament/models.py:122
+msgid "Game"
+msgstr "Spiel"
+
+#: tournament/models.py:123
+msgid "Games"
+msgstr "Spiele"
+
+#: tournament/models.py:128
+#, fuzzy, python-format
+msgid "%(teamA)s and %(teamB)s dont play in the same tournamentS"
 msgstr "%(team)s ist nicht im Turnier %(tournament)s"

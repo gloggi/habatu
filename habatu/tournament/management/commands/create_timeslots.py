@@ -10,7 +10,7 @@ class Command(NoArgsCommand):
     def  handle_noargs(self, **options):
         print "Creating timeframes..."
         
-        start_time = datetime(year=2010, month=11, day=7, hour=9, minute=30)
+        start_time = datetime(year=2010, month=11, day=7, hour=10, minute=00)
         
         game_duration = timedelta(minutes=15)
         

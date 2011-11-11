@@ -16,6 +16,11 @@ class Tournament(models.Model):
     title = models.CharField(_('title'), max_length=100)
     hidden = models.BooleanField(_('hidden'), help_text=_('dont show in result table'))
     
+    class Meta:
+        ordering = ('id',)
+        verbose_name = _('Tournament')
+        verbose_name_plural = _('Tournaments')
+    
     def __unicode__(self):
         return self.title
     
@@ -28,6 +33,11 @@ class Team(models.Model):
     manager = models.CharField(_('manager'), max_length=100, blank=True, null=True)
     club = models.CharField(_('club'), max_length=100, blank=True, null=True)
     tournament = models.ForeignKey(Tournament)
+
+    class Meta:
+        ordering = ('tournament',)
+        verbose_name = _('Team')
+        verbose_name_plural = _('Teams')
 
     def __unicode__(self):
         return self.name
@@ -68,9 +78,11 @@ class Team(models.Model):
 class Timeframe(models.Model):
     start = models.DateTimeField(_('from'))
     end = models.DateTimeField(_('to'))
-    
+
     class Meta:
         ordering = ('start',)
+        verbose_name = _('Timeframe')
+        verbose_name_plural = _('Timeframes')
     
     def __unicode__(self):
         return self.start.strftime('%H:%M')
@@ -89,7 +101,9 @@ class Location(models.Model):
     
     class Meta:
         ordering = ('name',)
-
+        verbose_name = _('Location')
+        verbose_name_plural = _('Locations')
+        
     def __unicode__(self):
         return self.name
 
@@ -103,6 +117,11 @@ class Game(models.Model):
     
     score_teamA = models.IntegerField(_('Score Team A'), blank=True, null=True)
     score_teamB = models.IntegerField(_('Score Team B'), blank=True, null=True)
+    
+    class Meta:
+        ordering = ('time', 'location',)
+        verbose_name = _('Game')
+        verbose_name_plural = _('Games')
     
     def clean(self):
         from django.core.exceptions import ValidationError
