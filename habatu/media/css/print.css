@@ -1,0 +1,46 @@
+
+html, body {
+    margin: 0px;
+}
+
+#timetable th, #timetable td {
+  height: 20px;
+  padding: 0px 3px;
+}
+
+header {
+    padding: 2px 0px;
+    margin: 3px;
+    text-shadow: none;
+    background: none;
+    color: black;
+    height: 20px;
+}
+
+
+header h1 {
+  font-size: 18px;
+}
+
+#gp_logo {
+    height: 20px;
+    width: 54px;
+    background: url(../img/gp_logo_print.png) no-repeat;
+}
+
+#clock {
+    display: none;
+}
+
+.game_entry {
+    padding: 0px;
+}
+
+.tools {
+    display: none;
+}
+
+.t1 { background: none; }
+.t2 { background: none; }
+.t3 { background: none; }
+.t4 { background: none; }
