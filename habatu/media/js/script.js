@@ -37,7 +37,7 @@ function updateClock() {
         $(tr).find('span.team').each(function (i, team) {
             var id = $(team).data('team-id');
             var hidden = $(team).data('hidden');
-            if (hidden) return false;
+            if (hidden == 'True') return false;
             if (team_count[id] !== undefined) {
                 team_count[id]++;
             } else {
