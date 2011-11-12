@@ -1,19 +1,19 @@
-/* 
+/*
  * Tournamet style!
  * Author: Stefan Reinhard
  */
- 
+
 @font-face { font-family: 'Alpha'; src: url('../ttf/Alpha.ttf'); }
 
 html, body {
-   margin: 10px;
+   margin: 5px 10px;
    color:black;
-} 
+}
 
 header {
    background:red;
-   padding:10px 15px;
-   margin:10px 0px;
+   padding: 5px 15px;
+   margin: 0 0 10px 0px;
    font-family: Alpha, Arial;
    -webkit-border-radius: 10px;
    -moz-border-radius: 10px;
@@ -39,7 +39,6 @@ h1 {
   text-shadow: none;
 
 }
-
 
 #gp_logo {
   float:right;
@@ -91,7 +90,7 @@ table.stats_table th {
 /*
  * Timetable Main Stuff
  */
- 
+
 #timetable {
   width: 100%;
   border-radius: 10px;
@@ -100,7 +99,7 @@ table.stats_table th {
 #timetable th, #timetable td {
   border: 1px solid #ccc;
   vertical-align:middle;
-  padding: 2px
+  padding: 2px;
 }
 
 .view th, .view td { font-size: 18px; }
@@ -131,7 +130,7 @@ table.stats_table th {
 }
 
 #timetable td.timeslot {
-  text-align: left; 
+  text-align: left;
 }
 
 td.drop { background: #C3D7FF; padding-bottom: 20px; }
