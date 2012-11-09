@@ -14,24 +14,27 @@ def compare_teams(teamA, teamB):
 
 class Tournament(models.Model):
     title = models.CharField(_('title'), max_length=100)
-    hidden = models.BooleanField(_('hidden'), help_text=_('dont show in result table'))
-    
+    hidden = models.BooleanField(_('hidden'),
+        help_text=_('dont show in result table'))
+
     class Meta:
         ordering = ('id',)
         verbose_name = _('Tournament')
         verbose_name_plural = _('Tournaments')
-    
+
     def __unicode__(self):
         return self.title
-    
+
     def teams_by_rank(self):
         return sorted(self.team_set.all(), cmp=compare_teams)
 
 
-class Team(models.Model):  
+class Team(models.Model):
     name = models.CharField(_('name'), max_length=100)
-    manager = models.CharField(_('manager'), max_length=100, blank=True, null=True)
-    club = models.CharField(_('club'), max_length=100, blank=True, null=True)
+    manager = models.CharField(_('manager'), max_length=100,
+        blank=True, null=True)
+    club = models.CharField(_('club'), max_length=100,
+        blank=True, null=True)
     tournament = models.ForeignKey(Tournament)
 
     class Meta:
@@ -41,28 +44,32 @@ class Team(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
     def all_games(self):
         return self.games_a.all() | self.games_b.all()
-    
+
     def total_games(self):
         return self.all_games().count()
-    
+
     def games_played(self):
         return len([g for g in self.all_games() if g.is_finished])
-    
+
     def total_goals_shot(self):
         return sum([g.goals_shot(self) for g in self.all_games()])
-    
+
     def total_goals_received(self):
         return sum([g.goals_received(self) for g in self.all_games()])
-    
+
     def score_ratio_display(self):
-        return "%d : %d" %(self.total_goals_shot(), self.total_goals_received())
-    
+        scored = self.total_goals_shot()
+        received = self.total_goals_received()
+        return "%d : %d" % (scored, received)
+
     def score_ratio(self):
-        return  (1.0 *self.total_goals_shot()) / (self.total_goals_received()+0.1)
-    
+        scored = self.total_goals_shot()
+        received = self.total_goals_received()
+        return float(scored) / (float(received) + 0.00001)
+
     @property
     def points(self):
         points = 0
@@ -83,14 +90,14 @@ class Timeframe(models.Model):
         ordering = ('start',)
         verbose_name = _('Timeframe')
         verbose_name_plural = _('Timeframes')
-    
+
     def __unicode__(self):
         return self.start.strftime('%H:%M')
-        
+
     @property
     def hour(self):
         return self.start.strftime('%H')
-    
+
     @property
     def minute(self):
         return self.start.strftime('%M')
@@ -98,12 +105,12 @@ class Timeframe(models.Model):
 
 class Location(models.Model):
     name = models.CharField(_('name'), max_length=20)
-    
+
     class Meta:
         ordering = ('name',)
         verbose_name = _('Location')
         verbose_name_plural = _('Locations')
-        
+
     def __unicode__(self):
         return self.name
 
@@ -111,32 +118,34 @@ class Location(models.Model):
 class Game(models.Model):
     time = models.ForeignKey(Timeframe)
     location = models.ForeignKey(Location)
-    
+
     teamA = models.ForeignKey(Team, related_name='games_a')
     teamB = models.ForeignKey(Team, related_name='games_b')
-    
+
     score_teamA = models.IntegerField(_('Score Team A'), blank=True, null=True)
     score_teamB = models.IntegerField(_('Score Team B'), blank=True, null=True)
-    
+
     class Meta:
         ordering = ('time', 'location',)
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
-    
+
     def clean(self):
         from django.core.exceptions import ValidationError
-        
+
         msg = _(u'%(teamA)s and %(teamB)s dont play in the same tournamentS')
         if self.teamA.tournament != self.teamB.tournament:
-            raise ValidationError(msg % {'teamA':self.teamA,
-                                         'teamB':self.teamB})
-            
+            raise ValidationError(msg % {
+                'teamA': self.teamA,
+                'teamB': self.teamB
+            })
+
         if self.teamA == self.teamB:
             raise ValidationError('A team cannot play agains itself!')
-            
+
     def __unicode__(self):
         return u"%s - %s" % (self.teamA, self.teamB)
-    
+
     def goals_shot(self, team):
         if not self.is_finished:
             return 0
@@ -146,7 +155,7 @@ class Game(models.Model):
             return self.score_teamB
         else:
             return 0
-    
+
     def goals_received(self, team):
         if not self.is_finished:
             return 0
@@ -156,11 +165,11 @@ class Game(models.Model):
             return self.score_teamA
         else:
             return 0
-    
+
     @property
     def tournament(self):
         return self.teamA.tournament
-    
+
     @property
     def winner(self):
         if self.score_teamA > self.score_teamB:
@@ -172,7 +181,7 @@ class Game(models.Model):
     @property
     def is_draw(self):
         return self.score_teamA == self.score_teamB
-    
+
     @property
     def is_finished(self):
         return not self.score_teamA is None and not self.score_teamB is None
