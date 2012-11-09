@@ -76,11 +76,11 @@ msgstr "Zeiten"
 
 #: tournament/models.py:104
 msgid "Location"
-msgstr "Ort"
+msgstr "Halle"
 
 #: tournament/models.py:105
 msgid "Locations"
-msgstr "Orte"
+msgstr "Hallen"
 
 #: tournament/models.py:118
 msgid "Score Team A"

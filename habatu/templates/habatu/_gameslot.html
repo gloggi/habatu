@@ -14,7 +14,7 @@
 <script type="text/javascript">
   $(function () {
     $("#add_{{ slot_id }}").hide();
-  
+
     $("#{{ slot_id }}").hover(function() {
       //$(this).css({'background-color': 'green'});
       if ($(this).find('.game_entry').size() == 0) {
@@ -24,7 +24,7 @@
       //$(this).css({'background-color': '#fff'});
       $("#add_{{ slot_id }}").hide();
     });
-    
+
     /*
     $("#{{ slot_id }}").click(function () {
         $("#add_{{ slot_id }}").click();

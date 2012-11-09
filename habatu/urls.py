@@ -35,7 +35,7 @@ urlpatterns = patterns('habatu.views',
             success_url='/saved/'
         ), name="tournament_game_delete"),
     url(r'^saved/$', TemplateView.as_view(
-            template_name='tournament/saved.html'
+            template_name='habatu/saved.html'
         ), name="tournament_saved"),
 )
 
