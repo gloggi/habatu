@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block extra_head %}
-<meta http-equiv="refresh" content="20; URL={% url tournament_table %}">
+{# <meta http-equiv="refresh" content="20; URL={% url tournament_table %}"> #}
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 {% for tournament in tournaments %}
 <div class="stats">
   <h1>{{ tournament }}</h1>
-  
+
   <table class="stats_table">
     <tr>
       <th width="10%">Rang</th>
