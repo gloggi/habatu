@@ -185,3 +185,13 @@ class Game(models.Model):
     @property
     def is_finished(self):
         return not self.score_teamA is None and not self.score_teamB is None
+
+class Message(models.Model):
+    message = models.TextField('Text')
+    create = models.DateTimeField('Datum', auto_now=True)
+
+    class Meta:
+        get_latest_by = 'id'
+
+    def __unicode__(self):
+        return self.message

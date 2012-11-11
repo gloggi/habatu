@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.contrib import admin
-from django.views.generic import TemplateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Game
+from .models import Game, Message
 from .forms import GameForm, GameFormDND
 
 admin.autodiscover()
@@ -13,8 +13,7 @@ urlpatterns = patterns('habatu.views',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 'table_view', name="tournament_table"),
-    url(r'^edit/$', 'table_edit', name="tournament_edit"),
+    url(r'^$', 'table_edit', name="tournament_edit"),
     url(r'^stats/$', 'stats', name="tournament_stats"),
     url(r'^create/$', 'game_create', name="tournament_game_create"),
     url(r'^create/(?P<timeframe_id>\d+)/(?P<location_id>\d+)/', \
@@ -37,6 +36,10 @@ urlpatterns = patterns('habatu.views',
     url(r'^saved/$', TemplateView.as_view(
             template_name='habatu/saved.html'
         ), name="tournament_saved"),
+    url(r'message/$', CreateView.as_view(
+            model=Message,
+            success_url='/saved/',
+        ), name="message_create")
 )
 
 urlpatterns += patterns('',

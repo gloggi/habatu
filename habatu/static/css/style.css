@@ -24,13 +24,28 @@ header {
 }
 
 
+p.message {
+  font-size: 36px;
+  color: #990000;
+  font-weight: bold;
+  font-family: Times;
+}
+
+p.mdate {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Times;
+}
+
+
+
 header h1 {
   font-size: 2.2em;
 }
 
 h1 {
   font-size: 26px;
-  font-weight: bold;
+  font-family: Alpha, Arial;
 }
 
 h2 {
@@ -55,7 +70,6 @@ h2 {
   background-size: 90px 33px;
 }
 
-
 .hidden {
   display:none;
 }
@@ -72,12 +86,12 @@ a:hover {
 
 .stats {
   position: relative;
-  width: 32%;
+  width: 31%;
   float: left;
-  margin-right: 2%;
+  margin-right: 3%;
 }
 
-.stats:last-child {
+.stats.last {
   margin-right: 0;
 }
 
@@ -85,12 +99,13 @@ a:hover {
 
 table.stats_table {
   margin-top:20px;
+  width: 100%;
 }
 
 table.stats_table td, table.stats_table th {
   border: 1px solid grey;
   padding:3px;
-  font-size: 18px;
+  font-size: 24px;
   text-align: center;
 }
 
@@ -152,7 +167,7 @@ tr.conflicts th, tr.conflicts td {
 }
 
 tr.current th, tr.current td {
-    background: #FFB387;
+    background: #FFCCCC;
 }
 
 .tools {

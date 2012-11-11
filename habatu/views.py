@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 
 
-from models import Tournament, Team, Timeframe, Location, Game
+from models import Tournament, Team, Timeframe, Location, Game, Message
 from forms import GameForm
 
 
@@ -24,20 +24,6 @@ def table_edit(request):
     })
 
 
-def table_view(request):
-    locations = Location.objects.all()
-    timeframes = Timeframe.objects.all()
-    teams = Team.objects.filter(tournament__hidden=False)
-    tournaments = Tournament.objects.filter(hidden=False)
-
-    return render(request, 'habatu/table_view.html', {
-        'locations': locations,
-        'timeframes': timeframes,
-        'teams': teams,
-        'tournaments': tournaments,
-    })
-
-
 def stats(request):
     locations = Location.objects.all()
     timeframes = Timeframe.objects.filter(
@@ -46,13 +32,15 @@ def stats(request):
     )
     teams = Team.objects.filter(tournament__hidden=False)
     tournaments = Tournament.objects.filter(hidden=False).select_related()
+    message = Message.objects.latest()
 
     return render(request, 'habatu/stats.html', {
         'template': 'ajax.html' if request.is_ajax() else 'base.html',
         'locations': locations,
         'timeframes': timeframes,
         'teams': teams,
-        'tournaments': tournaments
+        'tournaments': tournaments,
+        'message': message,
     })
 
 

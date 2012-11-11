@@ -8,7 +8,7 @@
     {% for location in locations %}
       <th class="location">{{ location}}</th>
     {% endfor %}
-    
+
     {% for timeframe in timeframes %}
       <tr data-hour="{{ timeframe.hour }}" data-minute="{{ timeframe.minute }}">
          <th>{{ timeframe.start|date:'H:i'}}</th>
@@ -16,7 +16,7 @@
             {% render_slot timeframe location %}
          {% endfor %}
       </tr>
-      
+
       {% render_lunch_time timeframe %}
     {% endfor %}
   </tr>
@@ -24,7 +24,7 @@
 
 <div class="tools">
     <span class="marker">
-      Team markieren: 
+      Team markieren:
       <select id="teammarker">
         <option value="0">Keines</option>
         {% for team in teams %}
@@ -32,6 +32,10 @@
         {% endfor %}
       </select>
     </span>
+
+    <a href="{% url message_create %}" class="fancy">
+      <button>Grücht verbreite!</button>
+    </a>
 
     <span class="legend">
     {% for tournament in tournaments %}

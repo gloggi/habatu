@@ -73,3 +73,8 @@ input.delete:hover {  background-color: #AF1AE8 }
     text-align: center;
     margin-top: 140px;
 }
+
+#id_message {
+  width: 540px;
+  height: 220px;
+}
