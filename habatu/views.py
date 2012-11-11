@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from django.shortcuts import render
 from django.views.generic.create_update import create_object
 from django.core.urlresolvers import reverse
@@ -37,9 +39,19 @@ def table_view(request):
 
 
 def stats(request):
+    locations = Location.objects.all()
+    timeframes = Timeframe.objects.filter(
+        start__gte=datetime.now() - timedelta(minutes=60),
+        end__lte=datetime.now() + timedelta(minutes=60)
+    )
+    teams = Team.objects.filter(tournament__hidden=False)
     tournaments = Tournament.objects.filter(hidden=False).select_related()
 
     return render(request, 'habatu/stats.html', {
+        'template': 'ajax.html' if request.is_ajax() else 'base.html',
+        'locations': locations,
+        'timeframes': timeframes,
+        'teams': teams,
         'tournaments': tournaments
     })
 

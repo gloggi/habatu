@@ -28,6 +28,7 @@ LANGUAGE_CODE = 'de-ch'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
+USE_TZ = False
 
 MEDIA_ROOT = os.path.join(BASE_PATH, 'media')
 MEDIA_URL = '/media/'

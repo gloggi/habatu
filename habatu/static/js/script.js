@@ -2,7 +2,7 @@
  * Javascrizzle in tha house!
  * Author: Stefan Reinhard
  */
- 
+
  dragActive = false;
 
 function updateCurrent() {
@@ -10,12 +10,12 @@ function updateCurrent() {
     var hour = now.getHours();
     var minute = now.getMinutes();
     minute = minute - (minute % 15);
-    
+
     $('tr.current').removeClass('current');
     $('tr').each(function () {
         var $tr = $(this);
         if (hour == $tr.data('hour') && minute == $tr.data('minute')) {
-            $tr.addClass('current');    
+            $tr.addClass('current');
         }
     });
 }
@@ -29,7 +29,7 @@ function updateClock() {
     s = s < 10 ? '0'+s : s;
     $('#clock').html(h+":"+m+":"+s);
 }
- 
+
  function checkConflicts() {
      $('tr').each(function (i, tr) {
         $(tr).removeClass('conflicts');
@@ -44,7 +44,7 @@ function updateClock() {
                 team_count[id] = 1;
             }
         });
-        
+
         // Look for conflicts
         for (team in team_count) {
             if (team_count[team] > 1) {
@@ -53,11 +53,11 @@ function updateClock() {
         }
     });
  }
- 
+
  function markTeams() {
     var selected = $(this).val();
     $("span.team").css({'font-weight': 'normal'});
-    $("span.team." + selected).css({'font-weight': 'bold'}); 
+    $("span.team." + selected).css({'font-weight': 'bold'});
     $(".game_entry").removeClass('mark');
     $(".game_entry").each(function () {
       if ($(this).has("span.team." + selected).length) {
@@ -65,26 +65,26 @@ function updateClock() {
       }
     });
  }
- 
+
 $(function () {
   $("a.fancy").fancybox({
         'type' : 'iframe',
         'width': 570,
-        'transitionIn': 'none', 
+        'transitionIn': 'none',
         'transitionOut': 'none',
-        'speedIn': 100, 
+        'speedIn': 100,
         'speedOut': 100,
         'padding': 0,
         'onStart': function () {
             return !dragActive;
         }
   });
-  
+
   checkConflicts();
   updateCurrent();
   updateClock();
   setInterval(updateClock, 500);
-  
+
   $('.game_entry').draggable({
     revert:'invalid',
     start: function(event, ui) {
@@ -95,13 +95,13 @@ $(function () {
         setTimeout(function() {dragActive = false}, 20);
     }
   });
-  
-  $('td').droppable({
+
+  $('#timetable.edit td').droppable({
     hoverClass: "drop",
 	drop: function( event, ui ) {
 	    // Add to td
         ui.draggable.appendTo(this).css({'left':0, 'top':0});
-        
+
         // Update data
         var id = ui.draggable.data('id');
         var data = {
@@ -109,12 +109,12 @@ $(function () {
           location : $(this).data('location')
         };
         $.post('/update_dnd/' + id + '/', data, function () {});
-        
+
         // Look for conflicts
         checkConflicts();
     }
   });
-  
+
   /* team marker */
   $("#teammarker").change(markTeams);
 });

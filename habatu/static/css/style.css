@@ -29,7 +29,13 @@ header h1 {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #clock {
@@ -65,25 +71,31 @@ a:hover {
 
 
 .stats {
-  padding-right:100px;
+  position: relative;
+  width: 32%;
+  float: left;
+  margin-right: 2%;
 }
 
-.stats h1 { font-size: 30px; }
+.stats:last-child {
+  margin-right: 0;
+}
+
+.stats h1 { font-size: 24px; }
 
 table.stats_table {
   margin-top:20px;
-  width: 100%;
 }
 
 table.stats_table td, table.stats_table th {
   border: 1px solid grey;
   padding:3px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 
 table.stats_table th {
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 
@@ -109,7 +121,7 @@ table.stats_table th {
 }
 
 #timetable.edit th {
-  height: 25px;
+  height: 20px;
 }
 
 #timetable th.time {
@@ -140,7 +152,7 @@ tr.conflicts th, tr.conflicts td {
 }
 
 tr.current th, tr.current td {
-    background: #FFFFD9;
+    background: #FFB387;
 }
 
 .tools {

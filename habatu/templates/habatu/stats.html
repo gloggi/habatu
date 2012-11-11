@@ -1,22 +1,68 @@
-{% extends "base.html" %}
+{% extends template %}
+{% load tournament_tags %}
 
 {% block extra_head %}
-{# <meta http-equiv="refresh" content="20; URL={% url tournament_table %}"> #}
+<script type="text/javascript">
+$(function () {
+  setInterval(function () {
+    $.get('{% url tournament_stats %}?' + new Date().getTime(), function(data) {
+      $('#main').html(data);
+    });
+  }, 5000);
+})
+
+</script>
 {% endblock %}
 
 {% block content %}
 
+<h1>Spielplan</h1>
+<br>
+
+<table id="timetable" class="view" cellpadding="0" cellspacing="0">
+  <tr>
+    <th class="time"><!-- empty --></th>
+    {% for location in locations %}
+      <th class="location">{{ location}}</th>
+    {% endfor %}
+
+    {% for timeframe in timeframes %}
+      <tr data-hour="{{ timeframe.hour }}" data-minute="{{ timeframe.minute }}">
+         <th>{{ timeframe.start|date:'H:i'}}</th>
+         {% for location in locations %}
+            {% render_slot_view timeframe location %}
+         {% endfor %}
+      </tr>
+
+      {% render_lunch_time timeframe %}
+    {% endfor %}
+  </tr>
+</table>
+
+<div class="tools">
+    <span class="legend">
+    {% for tournament in tournaments %}
+        <div class="square t{{ tournament.id }}"></div>
+        <div class="tournament_label">{{ tournament }}</div>
+    {% endfor %}
+    </span>
+</div>
+
+<br><br>
+
+<h1>Aktuelle Rangliste</h1>
+
 {% for tournament in tournaments %}
 <div class="stats">
-  <h1>{{ tournament }}</h1>
+  <h2>{{ tournament }}</h2>
 
   <table class="stats_table">
     <tr>
-      <th width="10%">Rang</th>
-      <th width="55%">Team</th>
-      <th width="15%">Spiele</th>
-      <th wisth="15%">Torverhältnis</th>
-      <th wisth="15%">Punkte</th>
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>Torv.</th>
+      <th>Punkte</th>
     </tr>
     {% for team in tournament.teams_by_rank %}
       <tr>
@@ -30,7 +76,8 @@
   </table>
   <br/><br/>
 </div>
-
 {% endfor %}
-
+<script type="text/javascript">
+  updateCurrent();
+</script>
 {% endblock %}
