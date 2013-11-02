@@ -33,7 +33,7 @@
       {{ form.teamB }}
     </td>
   </tr>
-  
+
   {% if object %}
   <tr>
     <th colspan="3">Ergebnis</th>
@@ -48,10 +48,10 @@
     </td>
   </tr>
   {% endif %}
-  
+
   <tr>
     <td>
-      <strong>In:</strong><br/> 
+      <strong>In:</strong><br/>
       {{ form.location }}
     </td>
     <td class="middle"></td>
@@ -60,15 +60,15 @@
       {{ form.time }}
     </td>
   </tr>
-  
+
   <tr><td> </td></tr>
-  
+
   <tr>
     <td colspan="3">
       <input type="submit" class="save button" value="Speicherä">
       </form>
       {% if object %}
-        {% url tournament_game_delete object.id as delete_url %}
+        {% url 'tournament_game_delete' object.id as delete_url %}
         <form method="post" action="{{ delete_url }}">
           {% csrf_token %}
           <input type="submit" class="delete button" value="Löschä" />

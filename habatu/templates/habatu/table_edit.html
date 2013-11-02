@@ -33,11 +33,11 @@
       </select>
     </span>
 
-    <a href="{% url message_create %}" class="fancy">
+    <a href="{% url 'message_create' %}" class="fancy noprint">
       <button>Grücht verbreite!</button>
     </a>
 
-    <span class="legend">
+    <span class="legend noprint">
     {% for tournament in tournaments %}
         <div class="square t{{ tournament.id }}"></div>
         <div class="tournament_label">{{ tournament }}</div>

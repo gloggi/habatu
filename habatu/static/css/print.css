@@ -45,6 +45,10 @@ header h1 {
     display: none;
 }
 
+.noprint {
+    display: none;
+}
+
 .legend .square {
     display: inline-block;
     position: relative;

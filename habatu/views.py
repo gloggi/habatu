@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 from django.shortcuts import render
-from django.views.generic.create_update import create_object
+from django.views.generic.edit import CreateView
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect
 
@@ -32,7 +32,10 @@ def stats(request):
     )
     teams = Team.objects.filter(tournament__hidden=False)
     tournaments = Tournament.objects.filter(hidden=False).select_related()
-    message = Message.objects.latest()
+    try:
+        message = Message.objects.latest()
+    except Message.DoesNotExist:
+        message = u'No keis'
 
     return render(request, 'habatu/stats.html', {
         'template': 'ajax.html' if request.is_ajax() else 'base.html',
@@ -42,13 +45,6 @@ def stats(request):
         'tournaments': tournaments,
         'message': message,
     })
-
-
-def game_create(request):
-    return create_object(request,
-        model=Game,
-        post_save_redirect=reverse('tournament_game_saved')
-    )
 
 
 def game_create_direct(request, timeframe_id, location_id):

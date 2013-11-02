@@ -2,12 +2,12 @@
 
 <td id="{{ slot_id }}" data-timeframe="{{ timeframe.id }}" data-location="{{ location.id }}" class="timeslot">
   {% for game in games %}
-    <a href="{% url tournament_game_update game.id %}" data-id="{{ game.id }}"
+    <a href="{% url 'tournament_game_update' game.id %}" data-id="{{ game.id }}"
          class="game_entry t{{ game.tournament.id }} fancy">
     {% render_game game %}
     </a>
   {% endfor %}
-  {% url tournament_game_create_direct timeframe.id location.id as create_url %}
+  {% url 'tournament_game_create_direct' timeframe.id location.id as create_url %}
   <a id="add_{{ slot_id }}" href="{{ create_url }}" class="fancy add_game">Spiel erstellen</a>
 </td>
 

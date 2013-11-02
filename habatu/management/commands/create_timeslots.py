@@ -11,12 +11,12 @@ class Command(NoArgsCommand):
     def handle_noargs(self, **options):
         print "Creating timeframes..."
 
-        start_time = datetime(year=2012, month=11, day=11, hour=9, minute=30)
+        start_time = datetime(year=2013, month=11, day=3, hour=9, minute=30)
 
         game_duration = timedelta(minutes=15)
 
         # morning games
-        launch_time = datetime(year=2012, month=11, day=11, hour=12, minute=00)
+        launch_time = datetime(year=2013, month=11, day=3, hour=12, minute=00)
 
         while start_time < launch_time:
             fr = Timeframe.objects.get_or_create(
@@ -30,7 +30,7 @@ class Command(NoArgsCommand):
         start_time += timedelta(minutes=60)
 
         #
-        end_time = datetime(year=2012, month=11, day=11, hour=17, minute=00)
+        end_time = datetime(year=2013, month=11, day=3, hour=17, minute=00)
 
         while start_time < end_time:
             fr = Timeframe.objects.get_or_create(

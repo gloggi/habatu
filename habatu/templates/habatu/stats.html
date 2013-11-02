@@ -5,7 +5,7 @@
 <script type="text/javascript">
 $(function () {
   setInterval(function () {
-    $.get('{% url tournament_stats %}?' + new Date().getTime(), function(data) {
+    $.get("{% url 'tournament_stats' %}" + new Date().getTime(), function(data) {
       $('#main').html(data);
     });
   }, 5000);

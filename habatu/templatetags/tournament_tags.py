@@ -46,7 +46,9 @@ def render_lunch_time(timeframe):
 
     end = timeframe.end
 
-    its_lunch_time = end.hour == 12 and end.minute == 30
+    its_lunch_time = end.hour == 12 and end.minute == 00
+
+    print end
 
     return {
         'should_render': its_lunch_time

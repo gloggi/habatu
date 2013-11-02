@@ -15,8 +15,11 @@ urlpatterns = patterns('habatu.views',
 
     url(r'^$', 'table_edit', name="tournament_edit"),
     url(r'^stats/$', 'stats', name="tournament_stats"),
-    url(r'^create/$', 'game_create', name="tournament_game_create"),
-    url(r'^create/(?P<timeframe_id>\d+)/(?P<location_id>\d+)/', \
+    url(r'^create/$', CreateView.as_view(
+            model=Game,
+            success_url='/saved/'
+        ), name="tournament_game_create"),
+    url(r'^create/(?P<timeframe_id>\d+)/(?P<location_id>\d+)/',
         'game_create_direct', name="tournament_game_create_direct"),
     url(r'^gamecount/$', 'game_count', name="tournament_game_count"),
     url(r'^update/(?P<pk>\d+)/$', UpdateView.as_view(
